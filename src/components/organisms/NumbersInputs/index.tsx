@@ -1,7 +1,13 @@
 import React from 'react';
+import { mapStateToProps } from './connection'
+import {connect} from "react-redux";
+
+
 
 const NumbersInputs = () => {
-  return <div>Code...</div>;
+  return (
+    <div />
+  );
 };
 
-export default NumbersInputs;
+export default connect(mapStateToProps, {})(NumbersInputs);
