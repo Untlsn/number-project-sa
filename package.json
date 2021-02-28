@@ -1,7 +1,8 @@
 {
-  "name": "www",
-  "version": "0.1.0",
-  "private": true,
+  "name": "number-partier",
+  "version": "1.0.0",
+  "homepage": "./",
+  "main": "public/electron.js",
   "devDependencies": {
     "@types/jest": "^26.0.15",
     "@types/node": "^12.0.0",
@@ -14,12 +15,15 @@
     "prettier": "^2.2.1",
     "react-scripts": "^4.0.3",
     "redux-devtools-extension": "^2.13.8",
-    "typescript": "^4.1.2"
+    "typescript": "^4.1.2",
+    "electron-builder": "^22.9.1"
   },
   "dependencies": {
     "@types/ramda": "^0.27.38",
     "@types/react-redux": "^7.1.16",
     "@types/redux": "^3.6.0",
+    "cross-env": "^7.0.3",
+    "electron-is-dev": "^2.0.0",
     "ramda": "^0.27.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
@@ -28,12 +32,14 @@
     "styled-components": "^5.2.1"
   },
   "scripts": {
-    "electron:start": "electron electron.config.js",
-    "react:start": "react-scripts start",
-    "react:build": "react-scripts build",
-    "react:test": "react-scripts test",
-    "react:eject": "react-scripts eject",
-    "start": "concurrently \"react-scripts start\" \"electron electron.config.js\""
+    "react-start": "react-scripts start",
+    "react-build": "react-scripts build",
+    "react-test": "react-scripts test --env=jsdom",
+    "react-eject": "react-scripts eject",
+    "electron-build": "electron-builder",
+    "release": "yarn react-build && electron-builder --publish=always",
+    "build": "yarn react-build && yarn electron-build",
+    "start": "concurrently \"cross-env BROWSER=none yarn react-start\" \"wait-on http://localhost:3000 && electron .\""
   },
   "eslintConfig": {
     "extends": [

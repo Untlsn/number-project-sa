@@ -3,7 +3,8 @@ import { FullNumberInputProps } from "./props";
 import {combinePartials, unCombineText} from "./helpers";
 import { mapStateToProps, mapDispatchToProps } from './connect'
 import { connect } from "react-redux";
-
+import Input from "../../atoms/Input";
+import TranslatorInput from "../../molecules/TranslatorInput";
 
 
 const FullNumberInput = ({ storeDispatch: { changeAll }, storeState: { numberPartials } }: FullNumberInputProps) => {
@@ -16,10 +17,15 @@ const FullNumberInput = ({ storeDispatch: { changeAll }, storeState: { numberPar
     )
   }
 
+  const inputValue = {
+    value: combinePartials(numberPartials),
+    setValue: inputChange
+  }
+
   return (
     <div>
-      <p>Wpisz liczbe</p>
-      <input type="text" value={combinePartials(numberPartials) || ''} onChange={inputChange}/>
+      <Input text="Wpisz liczbe" parentData={inputValue} />
+      <TranslatorInput text="Słownie" value={inputValue.value} isFull/>
     </div>
   );
 };

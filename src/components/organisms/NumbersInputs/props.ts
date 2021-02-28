@@ -1,6 +1,3 @@
-import { State } from "store";
-import {StateToProps} from "./connection";
+import { DispatchToProps, StateToProps } from './connection'
 
-export interface NumbersInputsProps extends StateToProps{
-  storeState: State
-}
+export interface NumbersInputsProps extends DispatchToProps, StateToProps {}

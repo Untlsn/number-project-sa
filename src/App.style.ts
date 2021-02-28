@@ -6,6 +6,8 @@ const RootGrid = styled.div`
 
 export const MainGrid = styled(RootGrid)`
   grid-template-columns: 70vw 30vw;
+  
+  transform: scale(.9);
 `
 
 export const LeftGrid = styled(RootGrid)`
